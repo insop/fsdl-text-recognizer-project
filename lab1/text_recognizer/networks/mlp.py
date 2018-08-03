@@ -19,6 +19,19 @@ def mlp(input_shape: Tuple[int, ...],
     # Don't forget to pass input_shape to the first layer of the model
     ##### Your code below (Lab 1)
 
+    print("DEBUG: input shape ", input_shape)
+    print("DEBUG: output shape ", output_shape)
+    print("DEBUG: layer_size ", layer_size)
+    print("DEBUG: num_layers ", num_layers)
+
+    model.add(Flatten(input_shape=input_shape))
+    
+    for layer in range(num_layers):
+        model.add(Dense(layer_size, activation='relu'))
+        model.add(Dropout(dropout_amount))
+
+    model.add(Dense(num_classes, activation='softmax'))
+
     ##### Your code above (Lab 1)
 
     return model
